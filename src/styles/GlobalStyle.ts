@@ -17,7 +17,9 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: sans-serif;
-      width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    background: var(--black);
   }
   
   html {
@@ -33,4 +35,8 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex: 1;
   }
+
+  h1, p, a {
+    color: var(--white);
+  } 
 `;
