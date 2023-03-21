@@ -20,6 +20,18 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     background: var(--black);
+
+    /* scrollbar */
+    &::-webkit-scrollbar {
+      width: 7px;
+      background: initial;
+      border: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--white);
+      border-radius: 4px;
+    }         
   }
   
   html {
