@@ -39,7 +39,6 @@ export const StyledCard = styled(motion.section)`
 }
 
 .star {
-  color: var(--red);
   position: absolute;
   top: .5rem;
   right: .5rem;
@@ -66,16 +65,21 @@ export const StyledCard = styled(motion.section)`
 
   .content h1:last-of-type, dp {
     margin-bottom: 1rem;
-    @media (min-width: 768px) {
-      margin-bottom: 4rem;
-    }
   }
   
   .content button {
     @media (min-width: 768px) {
-      position: absolute;
-      bottom: .1rem;
+      
     }
+  }
+
+   .buttons {
+     display: flex;
+     width: 100%;
+     flex-direction: column;
+     gap: 1rem;
+     position: absolute;
+     bottom: 0;
   }
 
   .dp {

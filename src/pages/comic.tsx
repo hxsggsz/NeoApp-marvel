@@ -37,7 +37,7 @@ export const ComicPage = () => {
 
             {comic.description ?
               <Text size="md">{comic.description}</Text>
-              : <img className="dp" width={450} height={170} src={dp} />}
+              : <Text size="md">No description avaiable :(</Text>}
 
             {comic.creators.items.map((creator, idx) => (
               <Text size="md" key={idx}>{creator.role}: {creator.name}</Text>

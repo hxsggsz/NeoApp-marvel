@@ -19,16 +19,12 @@ export const StyledComic = styled.section`
       align-items: center;
       gap: 1rem;
     }
-
-    button + .buy {
-      background: green;
-    }
   }
 
   .main-content h1 {
     width: 100%;
     border-bottom: .2rem solid var(--white);
-    padding: 2rem 0 0 1rem;
+    padding: 2rem 0;
   }
   .main-content a h1 {
     border-bottom: none;
