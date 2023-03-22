@@ -1,9 +1,11 @@
 import { Text } from '../text/text';
 import { StyledButton } from './index';
-export const Button = () => {
+import { ReactNode } from 'react';
+
+export const Button = (props: { children: ReactNode}) => {
   return (
     <StyledButton>
-      teste
+      {props.children}
     </StyledButton>
   )
 }
