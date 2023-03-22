@@ -1,45 +1,46 @@
 import styled from 'styled-components';
 
 export const StyledComic = styled.section`
-overflow-y: hidden;
-.image-container {
-  position: absolute;
-  img {
-    width: 100vw;
-    height: 70vh;
-  }
-}
-
-.main-content {
-    overflow-y: auto;
-    width: 100vw;
-    height: 60vh;
+  .main-content {
+    overflow-x: hidden;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    gap: 4rem;
-    bottom: 0;
-    position: absolute;
-    border-radius: 1.6rem 1.6rem 0  0;
-    
-    background: var(--dark-grey);
+    background: var(--black);
 
-    /* scrollbar */
-    &::-webkit-scrollbar {
-      width: 7px;
-      background: initial;
-      border: none;
+    @media (min-width: 768px) {
+      overflow: hidden;
     }
 
-    &::-webkit-scrollbar-thumb {
-      background: var(--white);
-      border-radius: 4px;
-    }    
+    form {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    button + .buy {
+      background: green;
+    }
   }
 
-  .main-content h1:first-child {
-    margin-top: 15rem;
+  .main-content h1 {
+    width: 100%;
+    border-bottom: .2rem solid var(--white);
+    padding: 2rem 0 0 1rem;
   }
+  .main-content a h1 {
+    border-bottom: none;
+    margin-bottom: 2rem;
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @media (min-width: 768px) {
+      margin-top: 2rem;
+  }
+}
 `;

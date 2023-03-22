@@ -1,4 +1,4 @@
-import bg from "/bg.jfif"
+import bg from "/bg.png"
 import { StyledHeader } from "."
 
 export const Header = () => {

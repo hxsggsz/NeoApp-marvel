@@ -1,36 +1,39 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Text } from "../components/text/text";
 import { StyledComic } from "../styles/comic";
 import { useGetOneComics } from "../hooks/useGetOneComic";
 import { Logo } from "../components/logo/logo";
 import dp from "/no-desc.gif"
+import { LinkText } from "../components/link-text/link-text";
+import { Button } from "../components/buttons/button/button";
+import { Input } from "../components/input/input";
+import { useEffect, useState } from 'react';
+import { Submit } from "../components/buttons/button-submit/Submit";
+import { PaperPlaneRight } from "phosphor-react";
+import { Comic } from "../components/comic/comic"
 
-export const Comic = () => {
+export const ComicPage = () => {
   const { id } = useParams()
-
+  const [isActive, setIsActive] = useState(false)
+  const [value, setValue] = useState("")
   const { data } = useGetOneComics(id)
-  console.log(data)
+
+  useEffect(() => {
+    value != "" ? setIsActive(true) : setIsActive(false)
+  }, [value])
+
 
   return (
-    <StyledComic>
+    <StyledComic >
       <Logo />
 
       {data?.data.results.map(comic => (
-        <>
-          <div key={comic.id} className="image-container">
-            <img
-              width={100}
-              height={100}
-              alt={`image of the ${comic.title} comic`}
-              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-            />
-          </div>
-
+        <Comic path={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}>
           <main className="main-content">
             <Text size="lg">{comic.title}</Text>
-            <Text size="md">Serie name: {comic.series.name}</Text>
-
-
+            <Text size="md">
+              Serie name: {comic.series.name}
+            </Text>
 
             {comic.description ?
               <Text size="md">{comic.description}</Text>
@@ -40,11 +43,20 @@ export const Comic = () => {
               <Text size="md" key={idx}>{creator.role}: {creator.name}</Text>
             ))}
 
-            {comic.urls.map((url) => (
-              url.type === "detail" && <Text size="lg"><Link to={url.url}>Know more!</Link></Text>
-            ))}
+            <div className="options">
+              {comic.urls.map((url, idx) => (
+                url.type === "detail" && <LinkText key={idx} path={url.url}>Read more!</LinkText>
+              ))}
+
+              <form>
+                <Input value={value} onChange={ev => setValue(ev.currentTarget.value)} isActive={isActive} />
+                <Submit><PaperPlaneRight size={38} weight="bold" /></Submit>
+              </form>
+
+              <Button className="buy">Buy it now!</Button>
+            </div>
           </main>
-        </>
+        </Comic>
       ))}
     </StyledComic>
   )

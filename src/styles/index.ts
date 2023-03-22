@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Main = styled.main`
   width: 100vw;
   position: relative;
-  
+  overflow: auto;
   .container {
     display: flex;  
     flex-direction: column;

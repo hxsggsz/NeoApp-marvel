@@ -27,3 +27,20 @@ export const StyledButton = styled.button`
     color: var(--white);
   }
 `;
+
+export const StyledSubmit = styled.button`
+  cursor: pointer;
+  border: none;
+  padding: 1rem 1.5rem;
+  transition: all 0.1s ease-in;
+  background: none;
+  color: var(--white);
+
+  &:hover {
+    color: var(--red);
+  }
+  
+  &:active {
+    color: var(--dark-grey);
+  }
+`;
