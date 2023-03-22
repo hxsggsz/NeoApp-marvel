@@ -12,7 +12,11 @@ interface Results {
   thumbnail: Thumbnail
   creators: Creators
   series: Series
-  urls: Urls
+  urls: {
+    [x: string]: any
+    type: string
+    url: string
+  }[]
 }
 
 interface Creators {
@@ -34,6 +38,6 @@ interface Series {
 }
 
 interface Urls {
-  urls: string
+
 }
 

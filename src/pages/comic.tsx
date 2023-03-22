@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Text } from "../components/text/text";
 import { StyledComic } from "../styles/comic";
 import { useGetOneComics } from "../hooks/useGetOneComic";
@@ -10,6 +10,7 @@ export const Comic = () => {
 
   const { data } = useGetOneComics(id)
   console.log(data)
+
   return (
     <StyledComic>
       <Logo />
@@ -27,14 +28,20 @@ export const Comic = () => {
 
           <main className="main-content">
             <Text size="lg">{comic.title}</Text>
+            <Text size="md">Serie name: {comic.series.name}</Text>
+
+
+
             {comic.description ?
-            <Text size="md">{comic.description}</Text>
-             : <img className="dp" width={450} height={170} src={dp} /> }
+              <Text size="md">{comic.description}</Text>
+              : <img className="dp" width={450} height={170} src={dp} />}
 
             {comic.creators.items.map((creator, idx) => (
-              <>
-                <Text key={idx}>{creator.role}: {creator.name}</Text>
-              </>
+              <Text size="md" key={idx}>{creator.role}: {creator.name}</Text>
+            ))}
+
+            {comic.urls.map((url) => (
+              url.type === "detail" && <Text size="lg"><Link to={url.url}>Know more!</Link></Text>
             ))}
           </main>
         </>
