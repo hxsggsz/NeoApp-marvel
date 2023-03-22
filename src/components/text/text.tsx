@@ -2,7 +2,7 @@ import { StyledText } from "."
 import { ReactNode } from "react";
 type TextTypes = {
   //assim o intelicense recomenda "md" quando usar a propiedade "size"
-  size?: "md" | undefined;
+  size?: "md" | "lg" | undefined
   children: ReactNode
 }
 

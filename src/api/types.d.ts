@@ -1,19 +1,21 @@
-export interface IApi {
+export interface IComics {
   data: {
     total: number
     results: Results[]
   }
 }
+
 interface Results {
   id: number
   title: string
   description: string
   thumbnail: Thumbnail
   creators: Creators
+  series: Series
+  urls: Urls
 }
 
 interface Creators {
-  available: number
   items: Item[]
 }
 
@@ -26,3 +28,12 @@ interface Thumbnail {
   extension: string
   path: string
 }
+
+interface Series {
+  name: string
+}
+
+interface Urls {
+  urls: string
+}
+

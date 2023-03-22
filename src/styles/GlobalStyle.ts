@@ -50,5 +50,6 @@ export const GlobalStyle = createGlobalStyle`
 
   h1, p, a {
     color: var(--white);
+    text-decoration: none;
   } 
 `;

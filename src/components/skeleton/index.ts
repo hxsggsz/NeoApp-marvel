@@ -9,7 +9,7 @@ export const StyledSkeleton = styled.section`
   display: flex;
   gap: 0 2rem;
   animation: skeleton-loading 1s linear infinite alternate;
-  
+
   @media (min-width: 768px) {
     width: 73rem;
     height: 30rem;
