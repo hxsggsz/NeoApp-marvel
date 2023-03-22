@@ -24,7 +24,7 @@ export const StyledComic = styled.section`
   .main-content h1 {
     width: 100%;
     border-bottom: .2rem solid var(--white);
-    padding: 2rem 0;
+    padding: 2rem 1rem;
   }
   .main-content a h1 {
     border-bottom: none;

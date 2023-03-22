@@ -23,7 +23,6 @@ export const Card = (props: CardTypes) => {
     if (generateNumber === 1) {
       setIsRare(true)
     }
-    console.log(generateNumber)
     // array de dependências vazio para que toda vez que a página carregar, ele execute esse código
   }, [])
 
@@ -46,7 +45,7 @@ export const Card = (props: CardTypes) => {
           <Text size="lg">{props.title}</Text>
           {props.desc ?
             <Text>{props.desc}</Text>
-            : <img className="dp" width={350} height={150} src={dp} />
+            : <Text>No description avaiable :(</Text>
           }
           <div className="buttons">
             <Button><Link to={props.path}>More info</Link></Button>

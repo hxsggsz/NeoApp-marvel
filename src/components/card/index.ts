@@ -60,35 +60,25 @@ export const StyledCard = styled(motion.section)`
   
   .content h1 {
     padding: 1rem  0 .4rem .6rem;
-
-  }
-
-  .content h1:last-of-type, dp {
-    margin-bottom: 1rem;
   }
   
-  .content button {
-    @media (min-width: 768px) {
-      
-    }
+  .content h1:last-of-type {
+    margin-bottom: 1rem;
+    border: 1px solid red;
+    max-height: 48vh;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
    .buttons {
      display: flex;
      width: 100%;
      flex-direction: column;
-     gap: 1rem;
-     position: absolute;
-     bottom: 0;
-  }
-
-  .dp {
-    width: 50vw;
-    height: 20vh;
-    
-    @media (min-width: 768px) {
-      width: 35rem;
-      height: 15rem;
+     gap: 1.5rem;
+     @media (min-width: 768px) {
+       position: absolute;
+       bottom: 0;
     }
   }
 `;
