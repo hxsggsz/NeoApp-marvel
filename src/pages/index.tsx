@@ -8,18 +8,20 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useGetAllComics } from '../hooks/useGetAllComics';
 import { Pagination } from "../components/pagination/pagination";
+import { Text } from "../components/text/text";
 
 export const Index = () => {
   const [pagination, setPagination] = useState<number | null>(1)
   const { data, isLoading } = useGetAllComics(pagination);
-  
+  const privateKey = import.meta.env.VITE_PRIVATE_KEY
+const publicKey = import.meta.env.VITE_PUBLIC_KEY
   return (
     <>
       <Header />
 
       <style.Main>
         <Logo />
-
+        <Text>{privateKey}, {publicKey}</Text>
         <div className="container">
           {isLoading ? <><Skeleton /><Skeleton /><Skeleton /></> :
             data?.data.results.map(comics => (
