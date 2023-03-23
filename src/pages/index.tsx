@@ -4,11 +4,15 @@ import { Card } from "../components/card/card";
 import { Header } from "../components/header/header";
 import { Skeleton } from '../components/skeleton/skeleton';
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useGetAllComics } from '../hooks/useGetAllComics';
-import { StarRare } from "../components/star/star";
+import { Pagination } from "../components/pagination/pagination";
 
 export const Index = () => {
-  const { data, isLoading } = useGetAllComics();
+  const [pagination, setPagination] = useState<number | null>(1)
+  const { data, isLoading } = useGetAllComics(pagination);
+  
   return (
     <>
       <Header />
@@ -28,6 +32,8 @@ export const Index = () => {
               />
             ))
           }
+
+          <Pagination setPagination={setPagination} max={data?.data.total}/>
         </div>
       </style.Main>
     </>

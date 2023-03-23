@@ -13,7 +13,6 @@ interface Results {
   creators: Creators
   series: Series
   urls: {
-    [x: string]: any
     type: string
     url: string
   }[]

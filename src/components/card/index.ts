@@ -64,7 +64,6 @@ export const StyledCard = styled(motion.section)`
   
   .content h1:last-of-type {
     margin-bottom: 1rem;
-    border: 1px solid red;
     max-height: 48vh;
     overflow: hidden;
     white-space: nowrap;
