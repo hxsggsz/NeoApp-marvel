@@ -4,14 +4,9 @@ import { StyledHeader } from "."
 export const Header = () => {
   return (
     <>
-    {/* colocando a imagem direto no html inves do <img/> não deixa a imagem esticada no mobile */}
-      <StyledHeader style={{
-            background: `url(${bg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            width: "100vw",
-            height: "100vh",
-         }} />
+      <StyledHeader>
+        <img width={100} height={100} src={bg} alt="todos os vingadores com o fundo vermelho" />
+      </StyledHeader>
     </>
   )
 }
