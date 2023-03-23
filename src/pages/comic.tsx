@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Text } from "../components/text/text";
 import { StyledComic } from "../styles/comic";
 import { useGetOneComics } from "../hooks/useGetOneComic";
@@ -17,6 +17,7 @@ import spider from "/spider-man.png"
 
 export const ComicPage = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [isActive, setIsActive] = useState(false)
   const [value, setValue] = useState("")
   const { data } = useGetOneComics(id)
@@ -25,6 +26,9 @@ export const ComicPage = () => {
     value != "" ? setIsActive(true) : setIsActive(false)
   }, [value])
 
+  if(data?.data.results.find(r => r.id != Number(id))) {
+    navigate("/404")
+  }
 
   return (
     <StyledComic >

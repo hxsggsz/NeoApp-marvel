@@ -1,6 +1,7 @@
 import { Index } from "./pages"
 import { ComicPage } from "./pages/comic"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { NotFoundPage } from './pages/notFoundPage';
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Index />} />
         <Route path='/comic/:id' element={<ComicPage />} />
+        <Route path='/404' element={<NotFoundPage />} />
+        <Route path='*' element={<Navigate to="/404" />} />
       </Routes>
     </BrowserRouter>
   )
