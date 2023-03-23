@@ -27,6 +27,7 @@ export const StyledCard = styled(motion.section)`
   max-width: 30rem;
   position: relative;
   max-height: 65vh;
+
   img {
     @media (min-width: 768px) {
       width: 100%;
@@ -50,7 +51,7 @@ export const StyledCard = styled(motion.section)`
     /* rem porque vw é relativo com o tamanho da tela e isso deixa o card gigante no desktop e o tamanho certo no mobile  */
     width: 40rem;
     max-width: 100vw;
-    
+
     @media (min-width: 768px) {
       position: relative;
       margin-left: 1rem;
@@ -59,7 +60,8 @@ export const StyledCard = styled(motion.section)`
   }
   
   .content h1 {
-    padding: 1rem  0 .4rem .6rem;
+    padding: 1rem  1.6rem .4rem 1.6rem;
+    text-align: center;
   }
   
   .content h1:last-of-type {
