@@ -4,6 +4,7 @@ export const StyledInput = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: start;
   position: relative;
   margin: 2rem 0;
   label {

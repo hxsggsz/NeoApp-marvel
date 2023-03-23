@@ -5,10 +5,11 @@ export const StyledComic = styled.section`
     overflow-x: hidden;
     padding-top: 1rem;
     display: flex;
+    gap: 2rem 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--black);
+    text-align: center;
 
     @media (min-width: 768px) {
       overflow: hidden;
@@ -18,12 +19,11 @@ export const StyledComic = styled.section`
       display: flex;
       align-items: center;
       gap: 1rem;
+      text-align: start;
     }
   }
 
   .main-content h1 {
-    width: 100%;
-    border-bottom: .2rem solid var(--white);
     padding: 2rem 1rem;
   }
   .main-content a h1 {
@@ -36,7 +36,7 @@ export const StyledComic = styled.section`
     align-items: center;
     flex-direction: column;
     @media (min-width: 768px) {
-      margin-top: 2rem;
+      margin-bottom: 2rem;
   }
 }
 `;

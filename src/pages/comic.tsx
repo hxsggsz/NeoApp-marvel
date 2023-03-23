@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { Submit } from "../components/buttons/button-submit/Submit";
 import { PaperPlaneRight } from "phosphor-react";
 import { Comic } from "../components/comic/comic"
+import noDesc from "/no-desc.gif";
 
 export const ComicPage = () => {
   const { id } = useParams()
@@ -30,17 +31,20 @@ export const ComicPage = () => {
       {data?.data.results.map(comic => (
         <Comic path={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}>
           <main className="main-content">
-            <Text size="lg">{comic.title}</Text>
-            <Text size="md">
-              Serie name: {comic.series.name}
-            </Text>
+              <Text size="lg">{comic.title}</Text>
+              <Text size="md">
+                Serie name: {comic.series.name}
+              </Text>
 
             {comic.description ?
-              <Text size="md">{comic.description}</Text>
-              : <Text size="md">No description avaiable :(</Text>}
+                <Text size="md">{comic.description}</Text>
+              : (
+                  <Text size="md">No description avaiable :(</Text>
+                  )}
 
+                  <Text size="md">Made by:</Text>
             {comic.creators.items.map((creator, idx) => (
-              <Text size="md" key={idx}>{creator.role}: {creator.name}</Text>
+                <Text size="md">{creator.role}: {creator.name}</Text>
             ))}
 
             <div className="options">
