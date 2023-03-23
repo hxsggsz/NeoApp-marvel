@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 100%;
+  width: 95%;
   min-height: 4rem;
   border: none;
   padding: 1rem 0;
@@ -35,7 +35,7 @@ export const StyledSubmit = styled.button`
   transition: all 0.1s ease-in;
   background: none;
   color: var(--white);
-
+  
   &:hover {
     color: var(--red);
   }

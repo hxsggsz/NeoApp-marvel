@@ -11,7 +11,9 @@ import { useEffect, useState } from 'react';
 import { Submit } from "../components/buttons/button-submit/Submit";
 import { PaperPlaneRight } from "phosphor-react";
 import { Comic } from "../components/comic/comic"
-import noDesc from "/no-desc.gif";
+import wolw from "/wolw.png"
+import avg from "/classic-avengers.png"
+import spider from "/spider-man.png"
 
 export const ComicPage = () => {
   const { id } = useParams()
@@ -31,26 +33,32 @@ export const ComicPage = () => {
       {data?.data.results.map(comic => (
         <Comic path={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}>
           <main className="main-content">
-              <Text size="lg">{comic.title}</Text>
-              <Text size="md">
-                Serie name: {comic.series.name}
-              </Text>
+            <Text size="lg">{comic.title}</Text>
+            <Text size="md">
+              Serie name: {comic.series.name}
+            </Text>
+
+            <img src={wolw} width={180} height={180} />
 
             {comic.description ?
-                <Text size="md">{comic.description}</Text>
+              <Text size="md">{comic.description}</Text>
               : (
-                  <Text size="md">No description avaiable :(</Text>
-                  )}
+                <Text size="md">No description avaiable :(</Text>
+              )}
 
-                  <Text size="md">Made by:</Text>
+            {comic.creators.items.length != 0 && <Text size="md">Made by:</Text>}
             {comic.creators.items.map((creator, idx) => (
-                <Text size="md">{creator.role}: {creator.name}</Text>
+              <Text size="md">{creator.role}: {creator.name}</Text>
             ))}
+
+            <img src={avg} width={400} height={200} />
 
             <div className="options">
               {comic.urls.map((url, idx) => (
                 url.type === "detail" && <LinkText key={idx} path={url.url}>Read more!</LinkText>
               ))}
+
+              <img src={spider} width={180} height={180} />
 
               <form>
                 <Input value={value} onChange={ev => setValue(ev.currentTarget.value)} isActive={isActive} />

@@ -20,6 +20,7 @@ export const StyledComic = styled.section`
       align-items: center;
       gap: 1rem;
       text-align: start;
+      margin-left: 2rem;
     }
   }
 
@@ -37,6 +38,7 @@ export const StyledComic = styled.section`
     flex-direction: column;
     @media (min-width: 768px) {
       margin-bottom: 2rem;
+      justify-content: center;
   }
 }
 `;

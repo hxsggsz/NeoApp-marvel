@@ -7,16 +7,8 @@ type PaginationType = {
   setPagination: Dispatch<SetStateAction<number | null>>
 }
 
-const getLocalpagination = () => {
-  const pag = localStorage.getItem("pag");
-  if (pag) {
-    return JSON.parse(pag);
-  }
-  return [1, 2, 3, 4, 5];
-};
-
 export const Pagination = ({ max, setPagination }: PaginationType) => {
-  const [pag, _] = useState(getLocalpagination())
+  const [pag, _] = useState([1, 2, 3, 4, 5])
   const [active, setActive] = useState(1)
   let [searchParams, setSearchParams] = useSearchParams();
 
@@ -26,7 +18,6 @@ export const Pagination = ({ max, setPagination }: PaginationType) => {
 
   useEffect(() => {
     setPagination(Number(offset))
-    setActive(Number(offset))
   }, [offset])
 
   const handlePag = (currentPage: number) => {
@@ -43,7 +34,6 @@ export const Pagination = ({ max, setPagination }: PaginationType) => {
       pag.pop()
     }
 
-    localStorage.setItem("pag", JSON.stringify(pag))
     setActive(currentPage)
     setSearchParams({ offset: currentPage.toString() })
   }

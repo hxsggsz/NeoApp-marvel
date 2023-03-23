@@ -3,17 +3,24 @@ import styled from 'styled-components';
 export const StyledComic = styled.main`
   .image-container {
     position: absolute;
+    height: 100vh;
+    width: 100vw;
     img {
-      width: 100vw;
-      height: 70vh;
+      width: 100%;
+      height: 100%;
+      
+      object-fit: fill;
     }
     @media (min-width: 768px) {
-      left: 1rem;
-      top: 1rem;
+      width: 50vw;
+      position: static;
+      display: flex;
+      justify-content: start;
+      padding: 1.5rem 0;
+      /* overflow: hidden; */
       img {
-        width: 58vw;
-        height: 96vh;
-        border-radius: 1.6rem;
+        width: 100%;
+        height: 100%;
       }
     }
   }
@@ -21,7 +28,7 @@ export const StyledComic = styled.main`
   .wrapper {
     overflow-y: auto;
     width: 100vw;
-    height: 60vh;
+    height: 50vh;
     bottom: 0;
     position: absolute;
     background: linear-gradient(
@@ -36,7 +43,7 @@ export const StyledComic = styled.main`
     @media (min-width: 768px) {
       top: 1rem;
       right: 1rem;
-      max-width: 40vw;
+      max-width: 47vw;
       height: 96vh;
       border-radius: 1.6rem;
     }
@@ -44,7 +51,7 @@ export const StyledComic = styled.main`
       /* scrollbar */
       &::-webkit-scrollbar {
         width: 7px;
-        background: var(--black);
+        background: none;
         border: none; 
         border-radius: 1.6rem ;
       }
@@ -54,4 +61,15 @@ export const StyledComic = styled.main`
         border-radius: 1.6rem ;
       }    
     } 
+
+    .eye {
+      user-select: none;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
 `;

@@ -1,12 +1,12 @@
-import dp from "/no-desc.gif";
 import { StyledCard } from ".";
 import { Text } from "../text/text";
 import { motion } from 'framer-motion';
 import { Button } from "../buttons/button/button";
-import { ShoppingCart, Star } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { ShoppingCart } from "phosphor-react";
+import { useReducer } from "react";
 import { Link } from "react-router-dom";
 import { StarRare } from "../star/star";
+import { Reducer, initialState } from "../../reducer/reducer";
 
 type CardTypes = {
   img: string
@@ -15,21 +15,18 @@ type CardTypes = {
   path: string
 }
 export const Card = (props: CardTypes) => {
-  const [isRare, setIsRare] = useState(false)
+  const [{ IsRare }, dispatch] = useReducer(Reducer, initialState)
 
-  useEffect(() => {
     // gera um numero de 1 a 10 (10 no total)
     const generateNumber = (Math.floor(Math.random() * 10) + 1)
-    if (generateNumber === 1) {
-      setIsRare(true)
-    }
-    // array de dependências vazio para que toda vez que a página carregar, ele execute esse código
-  }, [])
+      if (generateNumber === 1) {
+        dispatch({ type: "IsRare" })
+      }
 
   return (
     <StyledCard whileTap={{ scale: 0.9 }}>
       <div className="image-container">
-        {isRare && <StarRare />}
+        {IsRare  && <StarRare />}
         <motion.img
           whileHover={{ scale: 1.2, y: 10 }}
           transition={{ type: "keyframes" }}

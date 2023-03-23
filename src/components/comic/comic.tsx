@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { StyledComic } from '.';
-export const Comic = (props: {path: string, children: ReactNode}) => {
+import { Eye, EyeClosed } from 'phosphor-react';
+export const Comic = (props: { path: string, children: ReactNode }) => {
+  const [isShow, setIsShow] = useState(true)
   return (
     <StyledComic >
       <div className="image-container">
@@ -12,9 +14,15 @@ export const Comic = (props: {path: string, children: ReactNode}) => {
         />
       </div>
 
-      <div className="wrapper">
-        {props.children}
+      <div onClick={() => setIsShow(!isShow)} className="eye">
+        {isShow ? <EyeClosed cursor="pointer" color="white" size={58} weight="bold" /> : <Eye cursor="pointer" color="white" size={58} weight="bold" /> }
       </div>
+
+      {isShow &&
+        <div className="wrapper">
+          {props.children}
+        </div>
+      }
     </StyledComic>
   )
 }

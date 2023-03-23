@@ -9,8 +9,8 @@ const query = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={query}>
-    <App />
+      <App />
     </QueryClientProvider>
-    <GlobalStyle/>
+    <GlobalStyle />
   </React.StrictMode>,
 )

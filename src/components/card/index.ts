@@ -12,29 +12,30 @@ export const StyledCard = styled(motion.section)`
   overflow: hidden;
   padding: .5rem;  
   
-  @media (max-width: 430px) {
-    max-width: 100vw;
-  } 
-
   @media (min-width: 768px) {
     flex-direction: row;
   }
+
+  @media (max-width: 430px) {
+    max-width: 90vw;
+  } 
 
 .image-container {
   border: .2rem solid var(--black);
   border-radius: 1rem;
   overflow: hidden;
-  width: 100%;
+  max-width: 30rem;
   position: relative;
+  max-height: 65vh;
   img {
     @media (min-width: 768px) {
-      width: 30.2rem;
+      width: 100%;
       height: 100%;
-      max-height: 65vh;
+      object-fit: scale-down;
     }
     @media (max-width: 430px) {
-    max-width: 100vw;
-  } 
+      /* max-width: 100vw; */
+    } 
   }
 }
 
@@ -49,7 +50,6 @@ export const StyledCard = styled(motion.section)`
     /* rem porque vw é relativo com o tamanho da tela e isso deixa o card gigante no desktop e o tamanho certo no mobile  */
     width: 40rem;
     max-width: 100vw;
-    
     
     @media (min-width: 768px) {
       position: relative;
@@ -74,10 +74,16 @@ export const StyledCard = styled(motion.section)`
      display: flex;
      width: 100%;
      flex-direction: column;
-     gap: 1.5rem;
+     align-items: center;
+     justify-content: center;
+     gap: 1.5rem 0;
+     
      @media (min-width: 768px) {
        position: absolute;
        bottom: 0;
+    }
+     @media (max-width: 430px) {
+      padding: 0 1.4rem;
     }
   }
 `;
