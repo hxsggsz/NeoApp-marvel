@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Text } from "../components/text/text";
 import { StyledComic } from "../styles/comic";
 import { useGetOneComics } from "../hooks/useGetOneComic";
@@ -26,7 +26,8 @@ export const ComicPage = () => {
   const { data } = useGetOneComics(id)
   const { addNewItemshopCart } = useShopCart()
   const [isSucces, setIsSucces] = useState(false)
-
+  let [searchParams, setSearchParams] = useSearchParams();
+  const rarity: any = searchParams.get("isRare")
   //por isso na pagina de finalizar compra
   // const [isActive, setIsActive] = useState(false)
   // useEffect(() => {
@@ -47,10 +48,12 @@ export const ComicPage = () => {
             <Text size="lg">{comic.title}</Text>
             <Text size="md">
               Serie name: {comic.series.name}
-            </Text>
+            </Text> 
 
             <img src={wolw} width={180} height={180} />
-
+            
+            {rarity && <Text size="md">this comic is rare!</Text>}
+            
             {comic.description ?
               <Text size="md">{comic.description}</Text>
               : (
@@ -72,7 +75,7 @@ export const ComicPage = () => {
               <img src={spider} width={180} height={180} />
 
               <Button onClick={async () => {
-                addNewItemshopCart(comic.title, comic.thumbnail.path, comic.thumbnail.extension)
+                addNewItemshopCart(comic.title, comic.thumbnail.path, comic.thumbnail.extension, rarity)
                 setIsSucces(true)
                 await sleep(3000)
                 setIsSucces(false)

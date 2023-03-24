@@ -15,13 +15,16 @@ interface ThemeTypes {
 }
 
 interface StateProps {
-  ShopCart: {
-    id: string;
-    name: string;
-    path: string;
-    extension: string;
-    isRare: boolean;
-  }[]
+  state: {
+    ShopCart: {
+      id: string;
+      name: string;
+      path: string;
+      extension: string;
+      isRare: boolean;
+    }[]
+    isFinish: boolean;
+  }
   removeItem: (id: string) => void;
   finishBuy: () => void;
   addNewItemshopCart: (name: string, path: string, extension: string, isRare: boolean) => void
@@ -32,13 +35,13 @@ export const ShopCartContext = createContext({} as StateProps);
 export const useShopCart = () => useContext(ShopCartContext);
 
 export const ShopCartProvider = ({ children }: ThemeTypes) => {
-  const [{ ShopCart }, dispatch] = useReducer(ShopCartReducer, initialState)
+  const [state, dispatch] = useReducer(ShopCartReducer, initialState)
 
   const addNewItemshopCart = (name: string, path: string, extension: string, isRare: boolean) => {
     const id = uuid()
     const newItem = { id, name, path, extension, isRare }
     dispatch({ type: "ADD_SHOP", payload: newItem })
-    localStorage.setItem("item", JSON.stringify([...ShopCart, newItem]))
+    localStorage.setItem("item", JSON.stringify([...state.ShopCart, newItem]))
   }
 
   const removeItem = (id: string) => {
@@ -51,7 +54,7 @@ export const ShopCartProvider = ({ children }: ThemeTypes) => {
   }
 
   return (
-    <ShopCartContext.Provider value={{ ShopCart, addNewItemshopCart, removeItem, finishBuy }}>
+    <ShopCartContext.Provider value={{ state, addNewItemshopCart, removeItem, finishBuy }}>
       {children}
     </ShopCartContext.Provider>
   );

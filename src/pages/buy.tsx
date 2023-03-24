@@ -10,13 +10,14 @@ import { PaperPlaneRight } from 'phosphor-react';
 import spider from "/spider-man.png"
 import { Button } from "../components/buttons/button/button";
 import avangers from "/side-avengers.png"
+import { Notification } from "../components/notification/notification";
 
 export const Buy = () => {
-  const { ShopCart, removeItem, finishBuy } = useShopCart()
+  const { state, removeItem, finishBuy } = useShopCart()
   return (
     <StyledBuy>
       <BuyMenu>
-        {ShopCart.map(cart => (
+        {state.ShopCart.map(cart => (
           <BuyCard remove={() => removeItem(cart.id)} key={cart.id} path={`${cart.path}.${cart.extension}`} text={cart.name} isRare={cart.isRare} />
         ))}
       </BuyMenu>
@@ -39,6 +40,7 @@ export const Buy = () => {
           <Button onClick={finishBuy}>Finish it! <GetIcon /></Button>
         </div>
       </div>
+      <Notification isShow={state.isFinish}>You did it! The Avangers will know it</Notification>
     </StyledBuy>
   )
 }

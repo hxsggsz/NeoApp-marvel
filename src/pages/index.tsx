@@ -22,7 +22,7 @@ export const Index = () => {
   
   return (
     <>
-      <Header />
+      <Header /> 
 
       <style.Main>
         <Logo />
@@ -31,11 +31,11 @@ export const Index = () => {
             data?.data.results.map(comics => (
               <Card
                 key={comics.id}
-                link={`/comic/${comics.id}`}
+                id={comics.id}
                 title={comics.title}
                 desc={comics.description}
                 path={comics.thumbnail.path}
-                extension={comics.thumbnail.extension}
+                extension={comics.thumbnail.extension} 
               />
             ))
           }

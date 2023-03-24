@@ -9,12 +9,11 @@ import { Button } from "../buttons/button/button";
 import { useShopCart } from "../../context/shop-cart-context";
 
 type CardTypes = {
-  link: string
+  id: number
   extension: string
   title: string
   desc: string | undefined
   path: string
-  // addShopCart: () => void
 }
 export const Card = (props: CardTypes) => {
   // passando um state local pra um global porque se a condição for true no state global ele passa o true para todos os componentes
@@ -50,7 +49,7 @@ export const Card = (props: CardTypes) => {
           : <Text>No description avaiable :(</Text>
         }
         <div className="buttons">
-          <Link to={props.path}><Button>More info</Button></Link>
+          <Link to={`/comic/${props.id}?isRare=${isRare}`}><Button>More info</Button></Link>
           <Button onClick={() => addNewItemshopCart(props.title, props.path, props.extension, isRare)} className="shop-mobile">Add to shop-cart <ShoppingCart size={32} color="white" weight="bold" /></Button>
         </div>
       </div>

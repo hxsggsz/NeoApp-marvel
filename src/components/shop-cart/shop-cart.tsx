@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export const ShopCart = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { ShopCart, removeItem } = useShopCart()
+  const { state, removeItem } = useShopCart()
   return (
     <StyledShop isOpen={isOpen}>
       {isOpen && (
@@ -25,7 +25,7 @@ export const ShopCart = () => {
           </header>
 
           <ul>
-            {ShopCart.map(shop => (
+            {state.ShopCart.map(shop => (
               <li key={shop.id}>
                 <div className="wrapper">
                   <Text>{shop.name}</Text><GetIcon />
@@ -42,13 +42,13 @@ export const ShopCart = () => {
         </main>
       )}
 
-      {ShopCart.length !== 0 && (
+      {state.ShopCart.length !== 0 && (
 
         <button onClick={() => setIsOpen(!isOpen)} className="button">
           {isOpen ?
             <X size={32} weight="bold" /> :
             <div className="icon">
-              <Text>{ShopCart.length}</Text>
+              <Text>{state.ShopCart.length}</Text>
               <ShoppingCart size={32} color="white" weight="bold" />
             </div>
           }

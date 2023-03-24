@@ -17,6 +17,7 @@ const getItemByLocalStorage = () => {
 
 export const initialState = {
   ShopCart: getItemByLocalStorage(),
+  isFinish: false
 }
 
 type Action = { type: "ADD_SHOP"; payload: IShopCart } | { type: "REMOVE_SHOP"; payload: string } | {type: "FINISH_BUY";}
@@ -32,7 +33,11 @@ export const ShopCartReducer = (state: typeof initialState, action: Action) => {
       return { ...state, ShopCart: state.ShopCart.filter((item: any) => item.id !== action.payload) }
     
       case "FINISH_BUY":
-      return { ...state, ShopCart: state.ShopCart = [] }
+      return {
+         ...state,
+         ShopCart: state.ShopCart = [],
+         isFinish: !state.isFinish 
+       }
 
     default:
       return {
