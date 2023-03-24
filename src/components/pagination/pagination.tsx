@@ -1,15 +1,24 @@
 import { StyledPagination } from '.';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useSearchParams } from "react-router-dom"
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 type PaginationType = {
   max: number | undefined;
-  setPagination: Dispatch<SetStateAction<number | null>>
+  pagination: number;
+  setPagination: Dispatch<SetStateAction<number>>;
 }
 
-export const Pagination = ({ max, setPagination }: PaginationType) => {
-  const [pag, _] = useState([1, 2, 3, 4, 5])
-  const [active, setActive] = useState(1)
+const getLocalpagination = () => {
+  const pag = localStorage.getItem("pag");
+  if (pag) {
+    return JSON.parse(pag);
+  }
+  return [1, 2, 3, 4, 5];
+}
+
+export const Pagination = ({ max, pagination, setPagination }: PaginationType) => {
+  const [pag, _] = useState(getLocalpagination)
+  const [active, setActive] = useState(pagination)
   let [searchParams, setSearchParams] = useSearchParams();
 
   //pega o maior número inteiro do limite da APi dividido por 10
@@ -17,7 +26,10 @@ export const Pagination = ({ max, setPagination }: PaginationType) => {
   const offset = searchParams.get("offset")
 
   useEffect(() => {
-    setPagination(Number(offset))
+    if (offset !== null) {
+      setPagination(Number(offset))
+      localStorage.setItem("offset", JSON.stringify(offset))
+    }
   }, [offset])
 
   const handlePag = (currentPage: number) => {
@@ -35,13 +47,14 @@ export const Pagination = ({ max, setPagination }: PaginationType) => {
     }
 
     setActive(currentPage)
+    localStorage.setItem("pag", JSON.stringify(pag))
     setSearchParams({ offset: currentPage.toString() })
   }
 
   return (
     <StyledPagination>
-{/* any por causa do LocalStorage */}
-      {pag.map((page: any, idx) => (
+      {/* any por causa do LocalStorage */}
+      {pag.map((page: any, idx: number) => (
         <button key={idx * 100} onClick={() => handlePag(page)} className={active === page ? "active" : ""}>{page}</button>
       ))}
     </StyledPagination>

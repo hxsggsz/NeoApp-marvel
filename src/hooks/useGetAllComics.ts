@@ -12,7 +12,8 @@ export const useGetAllComics = (pag: number | null) => {
   const comics = useQuery<IComics>({
     queryFn: async () => {
       const response = await api.get<IComics>(`/comics?orderBy=title&limit=10&offset=${pag}0&ts=${ts}&apikey=${publicKey}&hash=${hash}`)
-    return response.data
+      
+      return response.data
     },
     queryKey: ["getAllComics", pag],
     keepPreviousData: true

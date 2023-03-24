@@ -14,7 +14,7 @@ export const StyledShop = styled.div<ShopCartTypes>`
   .button {
     cursor: pointer;
     padding: 1.5rem;
-    background: ${({ isOpen}) => isOpen ? "var(--dark-grey)" : "var(--red)" };
+    background: ${({ isOpen }) => isOpen ? "var(--dark-grey)" : "var(--red)"};
     border-radius: 5rem 0 0 5rem;
     position: fixed;
     bottom: 3rem;
@@ -122,4 +122,16 @@ export const StyledShop = styled.div<ShopCartTypes>`
     color: var(--red);
     border-radius: 50%;
   }
+
+  .close {
+      color: var(--white);
+
+      &:hover {
+        color: var(--red);
+      }
+
+      &:active {
+        color: var(--black);
+      }
+    }
 `;

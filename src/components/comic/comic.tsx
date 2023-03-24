@@ -4,7 +4,7 @@ import { Eye, EyeClosed } from 'phosphor-react';
 import bg from "/bg-comic.jpg"
 export const Comic = (props: { path: string, children: ReactNode }) => {
   const [isShow, setIsShow] = useState(true)
-  return (
+  return ( 
     <StyledComic >
       <div className="image-container" style={{
         backgroundImage: `url(${bg})`,

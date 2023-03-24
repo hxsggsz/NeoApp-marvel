@@ -11,7 +11,11 @@ export const StyledStar = styled(motion.div)`
   width: 100%;
   height: 30%;
   margin-bottom: 20rem;
-
+  
+  @media (min-width: 768px) {
+    margin-bottom: 27rem;
+  }
+    
   h1 {
     background: var(--dark-grey);
     border-radius: 1.2rem;

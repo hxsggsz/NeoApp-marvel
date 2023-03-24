@@ -12,10 +12,19 @@ import { Text } from "../components/text/text";
 import { ShopCart } from "../components/shop-cart/shop-cart";
 import { useShopCart } from "../context/shop-cart-context";
 
+const getLocalOffset = () => {
+  const offset = localStorage.getItem("offset");
+  if (offset) {
+    return JSON.parse(offset);
+  }
+  return 1;
+}
+
 export const Index = () => {
-  const [pagination, setPagination] = useState<number | null>(1)
+  const [pagination, setPagination] = useState<number>(getLocalOffset)
   const { data, isLoading } = useGetAllComics(pagination);
   const { addNewItemshopCart } = useShopCart()
+  
   return (
     <>
       <Header />
@@ -37,7 +46,7 @@ export const Index = () => {
           }
           <ShopCart/>
 
-          <Pagination setPagination={setPagination} max={data?.data.total}/>
+          <Pagination pagination={pagination} setPagination={setPagination} max={data?.data.total}/>
         </div>
       </style.Main>
     </>

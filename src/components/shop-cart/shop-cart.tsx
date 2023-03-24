@@ -21,7 +21,7 @@ export const ShopCart = () => {
               <SpiderManWeb />
             </div>
 
-            <X onClick={() => setIsOpen(!isOpen)} cursor="pointer" size={32} color="white" weight="bold" />
+            <X className="close" onClick={() => setIsOpen(!isOpen)} cursor="pointer" size={32} weight="bold" />
           </header>
 
           <ul>
@@ -30,7 +30,7 @@ export const ShopCart = () => {
                 <div className="wrapper">
                   <Text>{shop.name}</Text><GetIcon />
                 </div>
-                <X onClick={() => removeItem(shop.id)} cursor="pointer" size={52} color="white" weight="bold" />
+                <X className="close" onClick={() => removeItem(shop.id)} cursor="pointer" size={52} weight="bold" />
               </li>
             ))}
 
@@ -44,7 +44,7 @@ export const ShopCart = () => {
 
         <button onClick={() => setIsOpen(!isOpen)} className="button">
           {isOpen ?
-            <X size={32} color="white" weight="bold" /> :
+            <X size={32} weight="bold" /> :
             <div className="icon">
               <Text>{ShopCart.length}</Text>
               <ShoppingCart size={32} color="white" weight="bold" />

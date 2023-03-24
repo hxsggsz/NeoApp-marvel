@@ -13,7 +13,7 @@ export const StyledLogo = styled.div`
     img {
       width: 18rem;
       height: 8rem;
-      pointer-events: none;
+      user-select: none;
     }
   }
 

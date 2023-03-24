@@ -8,6 +8,7 @@ export const StyledComic = styled.main`
     display: flex;
     align-items: center;
     justify-content: center;
+
     img {
       width: 100%;
       height: 100%;
@@ -22,6 +23,7 @@ export const StyledComic = styled.main`
 
     @media (min-width: 768px) {
       width: 50vw;
+      height: 100vh;
       position: static;
       display: flex;
       justify-content: start;
@@ -30,7 +32,7 @@ export const StyledComic = styled.main`
       img {
         object-fit: fill;
         width: 100%;
-        height: 100%;
+        height: 100vh;
       }
     }
   }
@@ -47,10 +49,13 @@ export const StyledComic = styled.main`
     rgba(255, 255, 255, 0)
   );
   backdrop-filter: blur(10px);
-    border: .4rem solid white;
-    border-radius: 1.6rem 1.6rem 0  0;
-    
-    @media (min-width: 768px) {
+  border: .4rem solid white;
+  border-radius: 1.6rem 1.6rem 0  0;
+  
+  @media (min-width: 768px) {
+      background: none;
+      backdrop-filter: blur(10px);
+      border: none;
       top: 1rem;
       right: 1rem;
       max-width: 47vw;
