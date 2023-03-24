@@ -1,12 +1,12 @@
 import { ShoppingCart, X } from "phosphor-react"
 import { StyledShop } from "."
-import { useReducer, useState } from 'react';
+import { useState } from 'react';
 import { Text } from "../text/text";
-import { Reducer, initialState } from "../../reducer/reducer";
 import { SpiderManWeb } from "../icons-svg/spiderman-web";
 import { GetIcon } from "../icons-svg/getIcon";
 import { Button } from "../buttons/button/button";
 import { useShopCart } from "../../context/shop-cart-context";
+import { Link } from "react-router-dom";
 
 export const ShopCart = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,7 +36,9 @@ export const ShopCart = () => {
 
           </ul>
 
-          <Button>CheckOut</Button>
+          <Link to="/buy">
+            <Button>CheckOut</Button>
+          </Link>
         </main>
       )}
 

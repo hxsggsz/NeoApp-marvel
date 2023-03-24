@@ -1,16 +1,12 @@
+import { useState } from "react";
 import * as style from "../styles/index";
 import { Logo } from "../components/logo/logo";
 import { Card } from "../components/card/card";
 import { Header } from "../components/header/header";
-import { Skeleton } from '../components/skeleton/skeleton';
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useGetAllComics } from '../hooks/useGetAllComics';
-import { Pagination } from "../components/pagination/pagination";
-import { Text } from "../components/text/text";
+import { Skeleton } from "../components/skeleton/skeleton";
+import { useGetAllComics } from "../hooks/useGetAllComics";
 import { ShopCart } from "../components/shop-cart/shop-cart";
-import { useShopCart } from "../context/shop-cart-context";
+import { Pagination } from "../components/pagination/pagination";
 
 const getLocalOffset = () => {
   const offset = localStorage.getItem("offset");
@@ -23,7 +19,6 @@ const getLocalOffset = () => {
 export const Index = () => {
   const [pagination, setPagination] = useState<number>(getLocalOffset)
   const { data, isLoading } = useGetAllComics(pagination);
-  const { addNewItemshopCart } = useShopCart()
   
   return (
     <>
@@ -36,11 +31,11 @@ export const Index = () => {
             data?.data.results.map(comics => (
               <Card
                 key={comics.id}
-                addShopCart={() => addNewItemshopCart(comics.title, comics.thumbnail.path, comics.thumbnail.extension)}
-                path={`/comic/${comics.id}`}
+                link={`/comic/${comics.id}`}
                 title={comics.title}
                 desc={comics.description}
-                img={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
+                path={comics.thumbnail.path}
+                extension={comics.thumbnail.extension}
               />
             ))
           }

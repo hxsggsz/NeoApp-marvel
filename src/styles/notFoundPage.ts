@@ -20,14 +20,14 @@ export const StyledNotFound = styled.main`
   }
 
   .image-container {
-    
     img {
       width: 100%;
       height: 100%;
       object-fit: fill;
     }
+    
     @media(min-width: 768px) {
       transform: scaleX(-1);
-  }
+    }
   }
 `;

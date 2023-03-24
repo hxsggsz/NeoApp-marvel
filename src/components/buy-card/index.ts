@@ -7,23 +7,32 @@ export const StyledInfoCard = styled.div`
     text-align: center;
     align-items: center;
     flex-direction: column;
-    max-width: 30rem;
+    max-width: 20rem;
+    min-height: 35vh;
     padding: .5rem;
     border-radius: .6rem;
     position: relative;
-
-    .close {
+    
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: top;
+      padding: 0 1rem;
       position: absolute;
       top: 1rem;
-      left: 1rem;
-      color: var(--white);
+      left: 0;
+      
+      .close {
+        color: var(--white);
 
-      &:hover {
-        color: var(--red);
-      }
-
-      &:active {
-        color: var(--black);
+        :hover {
+          color: var(--red);
+        }
+  
+        &:active {
+          color: var(--black);
+        }
       }
     }
 
@@ -31,11 +40,11 @@ export const StyledInfoCard = styled.div`
       overflow: hidden;
       img {
         border-radius: .6rem;
-        width: 28rem;
-        height: 25rem;
+        width: 18.5rem;
+        height: 15rem;
         user-select: none;
         pointer-events: none;
-        object-fit: fill;
+        object-fit: cover;
       }
     }
 `;

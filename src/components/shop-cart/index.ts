@@ -67,7 +67,11 @@ export const StyledShop = styled.div<ShopCartTypes>`
     gap: 0 1rem;
   }
 
-  .shop button {
+  .shop a {
+    width: 95%;
+  }
+
+  .shop a button {
     position: absolute;
     bottom: 1rem;
   }
