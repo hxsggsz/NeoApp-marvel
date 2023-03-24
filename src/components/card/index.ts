@@ -15,28 +15,37 @@ export const StyledCard = styled(motion.section)`
   @media (min-width: 768px) {
     flex-direction: row;
   }
-
+  
   @media (max-width: 430px) {
     max-width: 90vw;
   } 
-
-.image-container {
+  
+  .image-container {
+  position: relative;
   border: .2rem solid var(--black);
   border-radius: 1rem;
   overflow: hidden;
-  max-width: 30rem;
-  position: relative;
-  max-height: 65vh;
+  max-width: 40rem;
+  max-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    max-height: 65vh;
+  }
 
   img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
     @media (min-width: 768px) {
       width: 100%;
       height: 100%;
+      pointer-events: none;
       object-fit: scale-down;
     }
-    @media (max-width: 430px) {
-      /* max-width: 100vw; */
-    } 
   }
 }
 
@@ -79,6 +88,7 @@ export const StyledCard = styled(motion.section)`
      align-items: center;
      justify-content: center;
      gap: 1.5rem 0;
+     /* border: 1px solid green; */
      
      @media (min-width: 768px) {
        position: absolute;

@@ -14,19 +14,26 @@ import { Comic } from "../components/comic/comic"
 import wolw from "/wolw.png"
 import avg from "/classic-avengers.png"
 import spider from "/spider-man.png"
+import { useShopCart } from "../context/shop-cart-context";
+import { Notification } from "../components/notification/notification";
+import { GetIcon } from "../components/icons-svg/getIcon";
+import sleep from "../utils/sleep";
+import { AnimatePresence } from "framer-motion";
 
 export const ComicPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [isActive, setIsActive] = useState(false)
-  const [value, setValue] = useState("")
   const { data } = useGetOneComics(id)
+  const { addNewItemshopCart } = useShopCart()
+  const [isSucces, setIsSucces] = useState(false)
 
-  useEffect(() => {
-    value != "" ? setIsActive(true) : setIsActive(false)
-  }, [value])
+  //por isso na pagina de finalizar compra
+  // const [isActive, setIsActive] = useState(false)
+  // useEffect(() => {
+  //   value != "" ? setIsActive(true) : setIsActive(false)
+  // }, [value])
 
-  if(data?.data.results.find(r => r.id != Number(id))) {
+  if (data?.data.results.find(r => r.id != Number(id))) {
     navigate("/404")
   }
 
@@ -35,7 +42,7 @@ export const ComicPage = () => {
       <Logo />
 
       {data?.data.results.map(comic => (
-        <Comic path={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}>
+        <Comic key={comic.id} path={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}>
           <main className="main-content">
             <Text size="lg">{comic.title}</Text>
             <Text size="md">
@@ -52,28 +59,32 @@ export const ComicPage = () => {
 
             {comic.creators.items.length != 0 && <Text size="md">Made by:</Text>}
             {comic.creators.items.map((creator, idx) => (
-              <Text size="md">{creator.role}: {creator.name}</Text>
+              <Text key={idx * 123} size="md">{creator.role}: {creator.name}</Text>
             ))}
 
             <img src={avg} width={400} height={200} />
 
             <div className="options">
               {comic.urls.map((url, idx) => (
-                url.type === "detail" && <LinkText key={idx} path={url.url}>Read more!</LinkText>
+                url.type === "detail" && <LinkText key={idx * 111} path={url.url}>Read more!</LinkText>
               ))}
 
               <img src={spider} width={180} height={180} />
 
-              <form>
-                <Input value={value} onChange={ev => setValue(ev.currentTarget.value)} isActive={isActive} />
-                <Submit><PaperPlaneRight size={38} weight="bold" /></Submit>
-              </form>
+              <Button onClick={async () => {
+                addNewItemshopCart(comic.title, comic.thumbnail.path, comic.thumbnail.extension)
+                setIsSucces(true)
+                await sleep(3000)
+                setIsSucces(false)
+                navigate("/")
+              }} className="buy">Add to shop-cart</Button>
 
-              <Button className="buy">Buy it now!</Button>
             </div>
           </main>
         </Comic>
       ))}
+
+      <Notification isShow={isSucces}><Text>Added on shop-cart</Text> <GetIcon /></Notification>
     </StyledComic>
   )
 }

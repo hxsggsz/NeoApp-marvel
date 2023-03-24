@@ -13,7 +13,7 @@ export const StyledButton = styled.button`
   background: var(--red);
   border-radius: 1.2rem;
   transition: all 0.1s;
-  font-size: min(5vw, 3.2rem);
+  font-size: min(5vw, 2.4rem);
   color: var(--white);
   font-weight: bold;
 

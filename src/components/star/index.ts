@@ -9,6 +9,8 @@ export const StyledStar = styled(motion.div)`
   align-items: center;
   position: absolute;
   width: 100%;
+  height: 30%;
+  margin-bottom: 20rem;
 
   h1 {
     background: var(--dark-grey);

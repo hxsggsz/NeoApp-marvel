@@ -41,8 +41,8 @@ export const Pagination = ({ max, setPagination }: PaginationType) => {
   return (
     <StyledPagination>
 {/* any por causa do LocalStorage */}
-      {pag.map((page: any) => (
-        <button onClick={() => handlePag(page)} className={active === page ? "active" : ""}>{page}</button>
+      {pag.map((page: any, idx) => (
+        <button key={idx * 100} onClick={() => handlePag(page)} className={active === page ? "active" : ""}>{page}</button>
       ))}
     </StyledPagination>
   )

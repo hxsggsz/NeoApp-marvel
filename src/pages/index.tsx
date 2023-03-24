@@ -9,11 +9,13 @@ import { useSearchParams } from "react-router-dom";
 import { useGetAllComics } from '../hooks/useGetAllComics';
 import { Pagination } from "../components/pagination/pagination";
 import { Text } from "../components/text/text";
+import { ShopCart } from "../components/shop-cart/shop-cart";
+import { useShopCart } from "../context/shop-cart-context";
 
 export const Index = () => {
   const [pagination, setPagination] = useState<number | null>(1)
   const { data, isLoading } = useGetAllComics(pagination);
-  
+  const { addNewItemshopCart } = useShopCart()
   return (
     <>
       <Header />
@@ -25,6 +27,7 @@ export const Index = () => {
             data?.data.results.map(comics => (
               <Card
                 key={comics.id}
+                addShopCart={() => addNewItemshopCart(comics.title, comics.thumbnail.path, comics.thumbnail.extension)}
                 path={`/comic/${comics.id}`}
                 title={comics.title}
                 desc={comics.description}
@@ -32,6 +35,7 @@ export const Index = () => {
               />
             ))
           }
+          <ShopCart/>
 
           <Pagination setPagination={setPagination} max={data?.data.total}/>
         </div>

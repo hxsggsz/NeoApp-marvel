@@ -5,9 +5,9 @@ interface Ibutton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
 }
 
-export const Button = ({ children }: Ibutton) => {
+export const Button = ({ children, ...props }: Ibutton) => {
   return (
-    <StyledButton>
+    <StyledButton {...props}>
       {children}
     </StyledButton>
   )

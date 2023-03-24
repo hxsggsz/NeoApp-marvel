@@ -14,7 +14,7 @@ export const StyledComic = styled.section`
     @media (min-width: 768px) {
       overflow: hidden;
     }
-
+ 
     form {
       display: flex;
       align-items: center;
@@ -36,9 +36,7 @@ export const StyledComic = styled.section`
     display: flex;
     align-items: center;
     flex-direction: column;
-    @media (min-width: 768px) {
-      margin-bottom: 2rem;
-      justify-content: center;
-  }
+    margin-bottom: 2rem;
+    width: 100%;
 }
 `;

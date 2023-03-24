@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     /* scrollbar */
     &::-webkit-scrollbar {
       width: 7px;
-      background: initial;
+      background: none;
       border: none;
     }
 
@@ -41,11 +41,6 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     min-height: 100%;
     overflow-x: hidden;
-  }
-
-  body {
-    display: flex;
-    flex: 1;
   }
 
   h1, p, a {

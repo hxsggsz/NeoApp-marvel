@@ -3,7 +3,7 @@ import { Text } from "../text/text";
 import { motion } from 'framer-motion';
 import { Button } from "../buttons/button/button";
 import { ShoppingCart } from "phosphor-react";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { Link } from "react-router-dom";
 import { StarRare } from "../star/star";
 import { Reducer, initialState } from "../../reducer/reducer";
@@ -13,18 +13,21 @@ type CardTypes = {
   title: string
   desc: string | undefined
   path: string
+  addShopCart: () => void
 }
 export const Card = (props: CardTypes) => {
   const [{ IsRare }, dispatch] = useReducer(Reducer, initialState)
 
-    // gera um numero de 1 a 10 (10 no total)
-    const generateNumber = (Math.floor(Math.random() * 10) + 1)
-      if (generateNumber === 1) {
-        dispatch({ type: "IsRare" })
-      }
+  useEffect(() => {
+      // gera um numero de 1 a 10 (10 no total)
+      const generateNumber = (Math.floor(Math.random() * 10) + 1)
+        if (generateNumber === 1) {
+          dispatch({ type: "IsRare" })
+        }
+  }, [])
 
   return (
-    <StyledCard whileTap={{ scale: 0.9 }}>
+    <StyledCard>
       <div className="image-container">
         {IsRare  && <StarRare />}
         <motion.img
@@ -37,7 +40,6 @@ export const Card = (props: CardTypes) => {
         />
       </div>
 
-      <Link to={props.path}>
         <div className="content">
           <Text size="lg">{props.title}</Text>
           {props.desc ?
@@ -46,10 +48,9 @@ export const Card = (props: CardTypes) => {
           }
           <div className="buttons">
             <Button><Link to={props.path}>More info</Link></Button>
-            <Button className="shop-mobile">Add to shop-cart <ShoppingCart size={32} color="white" weight="bold" /></Button>
+            <Button onClick={props.addShopCart} className="shop-mobile">Add to shop-cart <ShoppingCart size={32} color="white" weight="bold" /></Button>
           </div>
         </div>
-      </Link>
     </StyledCard>
   )
 }

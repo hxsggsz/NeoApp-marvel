@@ -5,12 +5,21 @@ export const StyledComic = styled.main`
     position: absolute;
     height: 100vh;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img {
       width: 100%;
       height: 100%;
-      
-      object-fit: fill;
+      object-fit: contain;
+      pointer-events: none;
     }
+
+    .left img {
+      position: absolute;
+      left: 0;
+    }
+
     @media (min-width: 768px) {
       width: 50vw;
       position: static;
@@ -19,6 +28,7 @@ export const StyledComic = styled.main`
       padding: 1.5rem 0;
       /* overflow: hidden; */
       img {
+        object-fit: fill;
         width: 100%;
         height: 100%;
       }
