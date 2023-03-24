@@ -11,9 +11,17 @@ import spider from "/spider-man.png"
 import { Button } from "../components/buttons/button/button";
 import avangers from "/side-avengers.png"
 import { Notification } from "../components/notification/notification";
+import { useEffect, useState } from 'react';
+import { AnimatePresence } from "framer-motion";
 
 export const Buy = () => {
-  const { state, removeItem, finishBuy } = useShopCart()
+  const { state, UpdateInput, dispatch, removeItem, finishBuy, onSubmit } = useShopCart()
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    state.newTicket !== "" ? setIsActive(true) : setIsActive(false)
+  }, [state.newTicket])
+
   return (
     <StyledBuy>
       <BuyMenu>
@@ -32,15 +40,24 @@ export const Buy = () => {
         </div>
 
         <div className="wrapper-buy">
-          <form>
-            <Input isActive={false} />
+          <form onSubmit={(ev) => onSubmit(ev)}>
+            <Input type="text" value={state.newTicket} onChange={(ev) => UpdateInput(ev)} isActive={isActive} />
             <Submit><PaperPlaneRight size={46} weight="bold" /></Submit>
           </form>
 
           <Button onClick={finishBuy}>Finish it! <GetIcon /></Button>
         </div>
       </div>
-      <Notification isShow={state.isFinish}>You did it! The Avangers will know it</Notification>
+
+      <AnimatePresence>
+        {state.isError && <Notification error text={state.setError} />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {state.isAccept && <Notification text={state.ticketAccept} />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {state.isFinish && <Notification text="You did it! The Avangers will remember that" />}
+      </AnimatePresence>
     </StyledBuy>
   )
 }

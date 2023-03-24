@@ -7,6 +7,7 @@ import { GetIcon } from "../icons-svg/getIcon";
 import { Button } from "../buttons/button/button";
 import { useShopCart } from "../../context/shop-cart-context";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const ShopCart = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,12 +27,18 @@ export const ShopCart = () => {
 
           <ul>
             {state.ShopCart.map(shop => (
-              <li key={shop.id}>
+              <motion.li
+                key={shop.id}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: "backInOut" }}
+              >
                 <div className="wrapper">
                   <Text>{shop.name}</Text><GetIcon />
                 </div>
                 <X className="close" onClick={() => removeItem(shop.id)} cursor="pointer" size={52} weight="bold" />
-              </li>
+              </motion.li>
             ))}
 
           </ul>

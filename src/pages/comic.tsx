@@ -28,11 +28,6 @@ export const ComicPage = () => {
   const [isSucces, setIsSucces] = useState(false)
   let [searchParams, setSearchParams] = useSearchParams();
   const rarity: any = searchParams.get("isRare")
-  //por isso na pagina de finalizar compra
-  // const [isActive, setIsActive] = useState(false)
-  // useEffect(() => {
-  //   value != "" ? setIsActive(true) : setIsActive(false)
-  // }, [value])
 
   if (data?.data.results.find(r => r.id != Number(id))) {
     navigate("/404")
@@ -87,7 +82,7 @@ export const ComicPage = () => {
         </Comic>
       ))}
 
-      <Notification isShow={isSucces}><Text>Added on shop-cart</Text> <GetIcon /></Notification>
-    </StyledComic>
+      {isSucces && <Notification><Text>Added on shop-cart</Text> <GetIcon /></Notification>}
+     </StyledComic>
   )
 }
