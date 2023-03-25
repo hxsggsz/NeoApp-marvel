@@ -1,22 +1,22 @@
-import { BuyCard } from "../components/buy-card/buy-card"
-import { GetIcon } from "../components/icons-svg/getIcon"
-import { Text } from "../components/text/text"
-import { useShopCart } from "../context/shop-cart-context"
-import { BuyMenu } from '../components/buy-menu/buy-menu';
-import { StyledBuy } from "../styles/buy";
-import { Input } from "../components/input/input";
-import { Submit } from "../components/buttons/button-submit/Submit";
-import { PaperPlaneRight } from 'phosphor-react';
 import spider from "/spider-man.png"
-import { Button } from "../components/buttons/button/button";
+import { StyledBuy } from "../styles/buy"
 import avangers from "/side-avengers.png"
-import { Notification } from "../components/notification/notification";
-import { useEffect, useState } from 'react';
-import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react"
+import { Text } from "../components/text/text"
+import { AnimatePresence } from "framer-motion"
+import { PaperPlaneRight } from "phosphor-react"
+import { Input } from "../components/input/input"
+import { GetIcon } from "../components/icons-svg/getIcon"
+import { BuyCard } from "../components/buy-card/buy-card"
+import { useShopCart } from "../context/shop-cart-context"
+import { BuyMenu } from "../components/buy-menu/buy-menu"
+import { Button } from "../components/buttons/button/button"
+import { Submit } from "../components/buttons/button-submit/Submit"
+import { Notification } from "../components/notification/notification"
 
 export const Buy = () => {
   const { state, UpdateInput, dispatch, removeItem, finishBuy, onSubmit } = useShopCart()
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     state.newTicket !== "" ? setIsActive(true) : setIsActive(false)
@@ -31,7 +31,7 @@ export const Buy = () => {
       </BuyMenu>
 
       <div className="finish-buy">
-        <Text size="lg">You're almost done! <GetIcon /></Text>
+        <Text size="lg">You"re almost done! <GetIcon /></Text>
         <img width={200} height={230} src={spider} alt="spider-man picture" />
         <Text size="md">To finish it follow the nexts steps</Text>
 
@@ -49,6 +49,7 @@ export const Buy = () => {
         </div>
       </div>
 
+      {/* a doc do framer motion pede pra fazer assim, se não for feito ativa um erro no console */}
       <AnimatePresence>
         {state.isError && <Notification error text={state.setError} />}
       </AnimatePresence>

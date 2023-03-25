@@ -1,7 +1,6 @@
-import { Star, X } from "phosphor-react";
 import { StyledInfoCard } from "."
-import { Text } from '../text/text';
-import { StarRare } from "../star/star";
+import { Text } from "../text/text"
+import { Star, X } from "phosphor-react"
 
 type BuyCardTypes = { path: string, text: string, isRare: boolean, remove: () => void }
 

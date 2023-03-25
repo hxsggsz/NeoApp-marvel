@@ -1,18 +1,18 @@
 export interface IShopCart {
-  id: string;
-  name: string;
-  path: string;
-  extension: string;
-  isRare: boolean;
+  id: number
+  name: string
+  path: string
+  extension: string
+  isRare: boolean
 }
 
 const getItemByLocalStorage = () => {
-  const currentItem = localStorage.getItem("item");
+  const currentItem = localStorage.getItem("item")
 
   if (currentItem) {
-    return JSON.parse(currentItem);
+    return JSON.parse(currentItem)
   }
-  return [] as IShopCart[];
+  return [] as IShopCart[]
 };
 
 export const initialState = {
@@ -35,7 +35,7 @@ export type Action =
   | { type: "CLEAN_TICKET"; }
   | { type: "INPUT"; payload: string; }
   | { type: "ADD_SHOP"; payload: IShopCart; }
-  | { type: "REMOVE_SHOP"; payload: string; }
+  | { type: "REMOVE_SHOP"; payload: number; }
   | { type: "INPUT_ERROR"; payload: string; }
   | { type: "TICKET_ACCEPT"; payload: string; }
 

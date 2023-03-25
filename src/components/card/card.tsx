@@ -1,12 +1,12 @@
-import { StyledCard } from ".";
-import { Text } from "../text/text";
-import { motion } from "framer-motion";
-import { StarRare } from "../star/star";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { ShoppingCart } from "phosphor-react";
-import { Button } from "../buttons/button/button";
-import { useShopCart } from "../../context/shop-cart-context";
+import { StyledCard } from "."
+import { Text } from "../text/text"
+import { motion } from "framer-motion"
+import { StarRare } from "../star/star"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { ShoppingCart } from "phosphor-react"
+import { Button } from "../buttons/button/button"
+import { useShopCart } from "../../context/shop-cart-context"
 
 type CardTypes = {
   id: number
@@ -17,14 +17,14 @@ type CardTypes = {
 }
 export const Card = (props: CardTypes) => {
   // passando um state local pra um global porque se a condição for true no state global ele passa o true para todos os componentes
-  const [isRare, setIsRare] = useState(false);
-  const { addNewItemshopCart } = useShopCart();
+  const [isRare, setIsRare] = useState(false)
+  const { addNewItemshopCart } = useShopCart()
 
   useEffect(() => {
     // gera um numero de 1 a 10 (10 no total)
     const generateNumber = (Math.floor(Math.random() * 10) + 1)
     if (generateNumber === 1) {
-      setIsRare(true);
+      setIsRare(true)
     }
   }, [])
 
@@ -50,7 +50,7 @@ export const Card = (props: CardTypes) => {
         }
         <div className="buttons">
           <Link to={`/comic/${props.id}?isRare=${isRare}`}><Button>More info</Button></Link>
-          <Button onClick={() => addNewItemshopCart(props.title, props.path, props.extension, isRare)} className="shop-mobile">Add to shop-cart <ShoppingCart size={32} color="white" weight="bold" /></Button>
+          <Button onClick={() => addNewItemshopCart(props.id, props.title, props.path, props.extension, isRare)} className="shop-mobile">Add to shop-cart <ShoppingCart size={32} color="white" weight="bold" /></Button>
         </div>
       </div>
     </StyledCard>

@@ -1,13 +1,13 @@
-import { ShoppingCart, X } from "phosphor-react"
 import { StyledShop } from "."
 import { useState } from 'react';
 import { Text } from "../text/text";
-import { SpiderManWeb } from "../icons-svg/spiderman-web";
-import { GetIcon } from "../icons-svg/getIcon";
-import { Button } from "../buttons/button/button";
-import { useShopCart } from "../../context/shop-cart-context";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
+import { GetIcon } from "../icons-svg/getIcon"
+import { ShoppingCart, X } from "phosphor-react"
+import { Button } from "../buttons/button/button"
+import { SpiderManWeb } from "../icons-svg/spiderman-web"
+import { useShopCart } from "../../context/shop-cart-context"
 
 export const ShopCart = () => {
   const [isOpen, setIsOpen] = useState(false)

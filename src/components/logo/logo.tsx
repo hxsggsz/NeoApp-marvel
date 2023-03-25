@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { StyledLogo } from ".";
-import logo from "/logo.png";
+import logo from "/logo.png"
+import { StyledLogo } from "."
+import { Link } from "react-router-dom"
 
 export const Logo = () => {
   return (

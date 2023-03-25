@@ -1,7 +1,5 @@
-import { ReactNode } from 'react';
-import { StyledNotification } from '.';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Text } from '../text/text';
+import { StyledNotification } from "."
+import { motion } from "framer-motion"
 export const Notification = (props: { text: string, error?: boolean }) => {
   return (
     <StyledNotification error={props.error!}>

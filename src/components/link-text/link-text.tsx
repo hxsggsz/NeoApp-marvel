@@ -1,7 +1,6 @@
 import { ReactNode } from "react"
-import { Text } from "../text/text"
-import { Link } from "react-router-dom"
 import { StyledLinkText } from "."
+import { Link } from "react-router-dom"
 
 export const LinkText = (props: {path: string, children: ReactNode}) => {
   return ( 

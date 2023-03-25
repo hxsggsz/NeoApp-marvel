@@ -8,51 +8,49 @@ import {
   FormEvent,
   ChangeEvent,
   useState,
-} from "react";
-import { Action, ShopCartReducer, initialState, IShopCart } from '../reducer/shop-cart-reducer';
-import uuid from "react-uuid";
-import sleep from "../utils/sleep";
+} from "react"
+import { Action, ShopCartReducer, initialState, IShopCart } from '../reducer/shop-cart-reducer'
+import sleep from "../utils/sleep"
 
 interface ThemeTypes {
-  children: ReactNode;
+  children: ReactNode
 }
 
 interface StateProps {
   state: {
     ShopCart: IShopCart[]
-    isFinish: boolean;
-    isActive: boolean;
-    isAccept: boolean;
-    isError: boolean;
-    setError: string;
-    newTicket: string;
-    ticketAccept: string;
+    isFinish: boolean
+    isActive: boolean
+    isAccept: boolean
+    isError: boolean
+    setError: string
+    newTicket: string
+    ticketAccept: string
   }
-  dispatch: Dispatch<Action>;
-  removeItem: (id: string) => void;
-  finishBuy: () => void;
+  dispatch: Dispatch<Action>
+  removeItem: (id: number) => void
+  finishBuy: () => void
   UpdateInput: (ev: ChangeEvent<HTMLInputElement>) => void
-  onSubmit: (ev: FormEvent<HTMLFormElement>) => void;
-  addNewItemshopCart: (name: string, path: string, extension: string, isRare: boolean) => void;
+  onSubmit: (ev: FormEvent<HTMLFormElement>) => void
+  addNewItemshopCart: (id: number, name: string, path: string, extension: string, isRare: boolean) => void
 }
 
-export const ShopCartContext = createContext({} as StateProps);
+export const ShopCartContext = createContext({} as StateProps)
 
-export const useShopCart = () => useContext(ShopCartContext);
+export const useShopCart = () => useContext(ShopCartContext)
 
 export const ShopCartProvider = ({ children }: ThemeTypes) => {
   const [state, dispatch] = useReducer(ShopCartReducer, initialState)
   const [normal, setNormal] = useState(false)
   const [rare, setRare] = useState(false)
 
-  const addNewItemshopCart = useCallback((name: string, path: string, extension: string, isRare: boolean) => {
-    const id = uuid()
+  const addNewItemshopCart = useCallback((id: number, name: string, path: string, extension: string, isRare: boolean) => {
     const newItem = { id, name, path, extension, isRare }
     dispatch({ type: "ADD_SHOP", payload: newItem })
     localStorage.setItem("item", JSON.stringify([...state.ShopCart, newItem]))
   }, [])
 
-  const removeItem = (id: string) => {
+  const removeItem = (id: number) => {
     dispatch({ type: "REMOVE_SHOP", payload: id })
   }
 
@@ -80,7 +78,7 @@ export const ShopCartProvider = ({ children }: ThemeTypes) => {
 
     const findRare = state.ShopCart.find((item: any) => item.isRare)
     if (state.newTicket === "neoapprare" && findRare && !rare) {
-      dispatch({ type: "TICKET_ACCEPT", payload: "shh dont tell anyone, this ticket is rare! applyed on rare comics " })
+      dispatch({ type: "TICKET_ACCEPT", payload: "shh dont tell anyone, this ticket is rare! applyed on rare comics" })
       setRare(true)
       setTimeout(() => {
         dispatch({ type: "CLEAN_TICKET" })
@@ -101,10 +99,10 @@ export const ShopCartProvider = ({ children }: ThemeTypes) => {
     }
 
     else {
-      dispatch({ type: "INPUT_ERROR", payload: "ticket not valid or in use :(" })
+      dispatch({ type: "INPUT_ERROR", payload: "ticket not valid or in use" })
       setTimeout(() => {
         dispatch({ type: "NO_ERROR" })
-      }, 3000)
+      }, 1000)
     }
   }
 
@@ -112,5 +110,5 @@ export const ShopCartProvider = ({ children }: ThemeTypes) => {
     <ShopCartContext.Provider value={{ state, dispatch, onSubmit, UpdateInput, addNewItemshopCart, removeItem, finishBuy }}>
       {children}
     </ShopCartContext.Provider>
-  );
-};
+  )
+}

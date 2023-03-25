@@ -1,25 +1,25 @@
-import { StyledPagination } from '.';
+import { StyledPagination } from '.'
 import { useSearchParams } from "react-router-dom"
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 type PaginationType = {
-  max: number | undefined;
-  pagination: number;
-  setPagination: Dispatch<SetStateAction<number>>;
+  max: number | undefined
+  pagination: number
+  setPagination: Dispatch<SetStateAction<number>>
 }
 
 const getLocalpagination = () => {
-  const pag = localStorage.getItem("pag");
+  const pag = localStorage.getItem("pag")
   if (pag) {
-    return JSON.parse(pag);
+    return JSON.parse(pag)
   }
-  return [1, 2, 3, 4, 5];
+  return [1, 2, 3, 4, 5]
 }
 
 export const Pagination = ({ max, pagination, setPagination }: PaginationType) => {
   const [pag, _] = useState(getLocalpagination)
   const [active, setActive] = useState(pagination)
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams, setSearchParams] = useSearchParams()
 
   //pega o maior número inteiro do limite da APi dividido por 10
   const limit = Math.ceil(max! / 10)

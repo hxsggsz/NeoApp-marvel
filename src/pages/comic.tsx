@@ -1,24 +1,19 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { Text } from "../components/text/text";
-import { StyledComic } from "../styles/comic";
-import { useGetOneComics } from "../hooks/useGetOneComic";
-import { Logo } from "../components/logo/logo";
-import dp from "/no-desc.gif"
-import { LinkText } from "../components/link-text/link-text";
-import { Button } from "../components/buttons/button/button";
-import { Input } from "../components/input/input";
-import { useEffect, useState } from 'react';
-import { Submit } from "../components/buttons/button-submit/Submit";
-import { PaperPlaneRight } from "phosphor-react";
-import { Comic } from "../components/comic/comic"
 import wolw from "/wolw.png"
-import avg from "/classic-avengers.png"
+import { useState } from "react"
+import sleep from "../utils/sleep"
 import spider from "/spider-man.png"
-import { useShopCart } from "../context/shop-cart-context";
-import { Notification } from "../components/notification/notification";
-import { GetIcon } from "../components/icons-svg/getIcon";
-import sleep from "../utils/sleep";
-import { AnimatePresence } from "framer-motion";
+import avg from "/classic-avengers.png"
+import { StyledComic } from "../styles/comic"
+import { Text } from "../components/text/text"
+import { Logo } from "../components/logo/logo"
+import { Comic } from "../components/comic/comic"
+import { useGetOneComics } from "../hooks/useGetOneComic"
+import { GetIcon } from "../components/icons-svg/getIcon"
+import { useShopCart } from "../context/shop-cart-context"
+import { LinkText } from "../components/link-text/link-text"
+import { Button } from "../components/buttons/button/button"
+import { Notification } from "../components/notification/notification"
+import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 
 export const ComicPage = () => {
   const { id } = useParams()
@@ -26,7 +21,7 @@ export const ComicPage = () => {
   const { data } = useGetOneComics(id)
   const { addNewItemshopCart } = useShopCart()
   const [isSucces, setIsSucces] = useState(false)
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams, setSearchParams] = useSearchParams()
   const rarity: any = searchParams.get("isRare")
 
   if (data?.data.results.find(r => r.id != Number(id))) {
@@ -46,9 +41,7 @@ export const ComicPage = () => {
             </Text> 
 
             <img src={wolw} width={180} height={180} />
-            
-            {rarity && <Text size="md">this comic is rare!</Text>}
-            
+                        
             {comic.description ?
               <Text size="md">{comic.description}</Text>
               : (
@@ -70,7 +63,7 @@ export const ComicPage = () => {
               <img src={spider} width={180} height={180} />
 
               <Button onClick={async () => {
-                addNewItemshopCart(comic.title, comic.thumbnail.path, comic.thumbnail.extension, rarity)
+                addNewItemshopCart(comic.id ,comic.title, comic.thumbnail.path, comic.thumbnail.extension, rarity)
                 setIsSucces(true)
                 await sleep(3000)
                 setIsSucces(false)
@@ -82,7 +75,7 @@ export const ComicPage = () => {
         </Comic>
       ))}
 
-      {isSucces && <Notification text={`Added on shop-cart</Text> ${<GetIcon />}`} />}
+      {isSucces && <Notification text={`Added on shop-cart ${<GetIcon />}`} />}
      </StyledComic>
   )
 }

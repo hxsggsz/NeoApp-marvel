@@ -1,5 +1,5 @@
-import { StyledSubmit } from '../index';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { StyledSubmit } from "../index"
+import { ButtonHTMLAttributes, ReactNode } from "react"
 
 interface ISubmit extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode

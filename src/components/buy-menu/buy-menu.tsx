@@ -1,11 +1,11 @@
-import { ReactNode, useState } from 'react';
 import { StyledMenu } from "."
-import logo from "/logo.png";
-import { CaretDoubleLeft, CaretDoubleRight } from 'phosphor-react';
-import { Link } from 'react-router-dom';
-import { Text } from '../text/text';
-import { GetIcon } from '../icons-svg/getIcon';
-import { AnimatePresence, motion } from 'framer-motion';
+import logo from "/logo.png"
+import { Text } from "../text/text"
+import { Link } from "react-router-dom"
+import { ReactNode, useState } from "react"
+import { GetIcon } from "../icons-svg/getIcon"
+import { AnimatePresence, motion } from "framer-motion"
+import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react"
 
 type StyledBuyMenu = {
   children: ReactNode

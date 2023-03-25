@@ -1,6 +1,6 @@
-import { ReactNode, useState } from 'react';
-import { StyledComic } from '.';
-import { Eye, EyeClosed } from 'phosphor-react';
+import { ReactNode, useState } from "react"
+import { StyledComic } from "."
+import { Eye, EyeClosed } from "phosphor-react"
 import bg from "/bg-comic.jpg"
 export const Comic = (props: { path: string, children: ReactNode }) => {
   const [isShow, setIsShow] = useState(true)

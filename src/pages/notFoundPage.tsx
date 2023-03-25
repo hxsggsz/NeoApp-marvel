@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
-import { Text } from "../components/text/text"
-import { StyledNotFound } from "../styles/notFoundPage"
-import avangers from "/side-avengers.png"
-import { Button } from "../components/buttons/button/button"
-import { Logo } from "../components/logo/logo"
 import spider from "/spider-man.png"
+import { Link } from "react-router-dom"
+import avangers from "/side-avengers.png"
+import { Text } from "../components/text/text"
+import { Logo } from "../components/logo/logo"
+import { StyledNotFound } from "../styles/notFoundPage"
+import { Button } from "../components/buttons/button/button"
 
 export const NotFoundPage = () => {
   return (
