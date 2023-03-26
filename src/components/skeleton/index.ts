@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledSkeleton = styled.section`
   border-radius: 1.2rem;
-  width: 41rem;
-  height: 50rem;
+  width: 30rem;
+  height: 40rem;
   background: var(--dark-grey);
   border: .2rem solid var(--dark-grey);
   display: flex;
@@ -11,8 +11,8 @@ export const StyledSkeleton = styled.section`
   animation: skeleton-loading 1s linear infinite alternate;
 
   @media (min-width: 768px) {
-    width: 73rem;
-    height: 30rem;
+    width: 65rem;
+    height: 40rem;
   }
 
   @keyframes skeleton-loading {

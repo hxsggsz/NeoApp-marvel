@@ -9,9 +9,17 @@ import { AnimatePresence, motion } from "framer-motion"
 import { SpiderManWeb } from "../icons-svg/spiderman-web"
 import { useShopCart } from "../../context/shop-cart-context"
 
-export const ShopCart = () => {
+type ShopCarttype = {
+  shopCart: {
+    id: number
+    name: string
+  }[]
+  removeItem: (id: number) => void
+}
+
+export const ShopCart = ({ shopCart, removeItem }: ShopCarttype) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { state, removeItem } = useShopCart()
+
   return (
     <StyledShop isOpen={isOpen}>
       <AnimatePresence>
@@ -29,7 +37,7 @@ export const ShopCart = () => {
 
             <ul>
               <AnimatePresence>
-                {state.ShopCart.map(shop => (
+                {shopCart.map(shop => (
                   <motion.li
                     key={shop.id}
                     initial={{ opacity: 0, y: -10 }}
@@ -55,7 +63,7 @@ export const ShopCart = () => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {state.ShopCart.length !== 0 && (
+        {shopCart.length !== 0 && (
           <motion.button
             key="isOpen"
             data-cy="open-btn"
@@ -67,7 +75,7 @@ export const ShopCart = () => {
             {isOpen ?
               <X size={32} weight="bold" /> :
               <div className="icon">
-                <Text>{state.ShopCart.length}</Text>
+                <Text>{shopCart.length}</Text>
                 <ShoppingCart size={32} color="white" weight="bold" />
               </div>
             }

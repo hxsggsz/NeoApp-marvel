@@ -16,6 +16,7 @@ export const useGetAllComics = (pag: number | null) => {
       return response.data
     },
     queryKey: ["getAllComics", pag],
+    refetchOnWindowFocus: false,
     keepPreviousData: true
   })
 

@@ -17,10 +17,14 @@ export const StyledShop = styled.div<ShopCartTypes>`
     background: ${({ isOpen }) => isOpen ? "var(--dark-grey)" : "var(--red)"};
     border-radius: 5rem 0 0 5rem;
     position: fixed;
-    bottom: 3rem;
+    bottom: 10rem;
     right: -.5rem;
     z-index: 99;
     border: .2rem solid var(--white);
+
+    @media(min-width:768px) {
+      bottom: 2rem;
+    }
   }
   
   .shop {

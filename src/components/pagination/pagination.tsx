@@ -1,7 +1,7 @@
-import { StyledPagination } from '.'
+import { StyledPagination } from "."
+import { motion } from "framer-motion"
 import { useSearchParams } from "react-router-dom"
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 type PaginationType = {
   max: number | undefined
