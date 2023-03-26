@@ -69,10 +69,10 @@ describe('ShopCart Context', () => {
 
     fireEvent.input(input, { target: { value: "neoapp10" } })
     fireEvent.submit(button)
-    await waitFor(() => expect(screen.getByText(/ticket accept for all your comics!/i)).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText(/ticket accept for your normal comics!/i)).toBeInTheDocument())
 
     await new Promise((res) => setTimeout(res, 100));
-    const mensage = screen.queryByText(/ticket accept for all your comics!/i)
+    const mensage = screen.queryByText(/ticket accept for your normal comics!/i)
     //por algum motivo o teste só passa com essas promises nele
     await new Promise((res) => setTimeout(res, 100));
     fireEvent.input(input, { target: { value: "neoapp10" } })

@@ -69,7 +69,7 @@ export const ShopCartProvider = ({ children }: ThemeTypes) => {
     ev.preventDefault()
     
     if (state.newTicket === "neoapp10" && !normal) {
-      dispatch({ type: "TICKET_ACCEPT", payload: "ticket accept for all your comics!" })
+      dispatch({ type: "TICKET_ACCEPT", payload: "ticket accept for your normal comics!" })
       setNormal(true)
       setTimeout(() => {
         dispatch({ type: "CLEAN_TICKET" })
