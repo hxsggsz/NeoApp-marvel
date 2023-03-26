@@ -21,8 +21,9 @@ export const BuyMenu = ({ children }: StyledBuyMenu) => {
         </Link>
 
         <motion.button
+          data-cy='menu-list'
           whileTap={{ rotate: 360 }}
-          transition={{type: "keyframes"}}
+          transition={{ type: "keyframes" }}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <CaretDoubleRight size={58} color="white" weight="bold" /> : <CaretDoubleLeft size={58} color="white" weight="bold" />}

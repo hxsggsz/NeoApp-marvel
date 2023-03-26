@@ -1,7 +1,7 @@
 import { StyledShop } from "."
 import { useState } from 'react';
 import { Text } from "../text/text";
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { GetIcon } from "../icons-svg/getIcon"
 import { ShoppingCart, X } from "phosphor-react"
@@ -26,20 +26,22 @@ export const ShopCart = () => {
           </header>
 
           <ul>
-            {state.ShopCart.map(shop => (
-              <motion.li
-                key={shop.id}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3, ease: "backInOut" }}
-              >
-                <div className="wrapper">
-                  <Text>{shop.name}</Text><GetIcon />
-                </div>
-                <X className="close" onClick={() => removeItem(shop.id)} cursor="pointer" size={52} weight="bold" />
-              </motion.li>
-            ))}
+            <AnimatePresence>
+              {state.ShopCart.map(shop => (
+                <motion.li
+                  key={shop.id}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: "backInOut" }}
+                >
+                  <div className="wrapper">
+                    <Text>{shop.name}</Text><GetIcon />
+                  </div>
+                  <X className="close" onClick={() => removeItem(shop.id)} cursor="pointer" size={52} weight="bold" />
+                </motion.li>
+              ))}
+            </AnimatePresence>
 
           </ul>
 
@@ -51,7 +53,7 @@ export const ShopCart = () => {
 
       {state.ShopCart.length !== 0 && (
 
-        <button onClick={() => setIsOpen(!isOpen)} className="button">
+        <button data-cy="open-btn" onClick={() => setIsOpen(!isOpen)} className="button">
           {isOpen ?
             <X size={32} weight="bold" /> :
             <div className="icon">

@@ -75,7 +75,7 @@ export const ComicPage = () => {
         </Comic>
       ))}
 
-      {isSucces && <Notification text={`Added on shop-cart ${<GetIcon />}`} />}
+      {isSucces && <Notification text="Added on shop-cart" />}
      </StyledComic>
   )
 }

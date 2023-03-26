@@ -40,9 +40,9 @@ export const ShopCartContext = createContext({} as StateProps)
 export const useShopCart = () => useContext(ShopCartContext)
 
 export const ShopCartProvider = ({ children }: ThemeTypes) => {
-  const [state, dispatch] = useReducer(ShopCartReducer, initialState)
-  const [normal, setNormal] = useState(false)
   const [rare, setRare] = useState(false)
+  const [normal, setNormal] = useState(false)
+  const [state, dispatch] = useReducer(ShopCartReducer, initialState)
 
   const addNewItemshopCart = useCallback((id: number, name: string, path: string, extension: string, isRare: boolean) => {
     const newItem = { id, name, path, extension, isRare }

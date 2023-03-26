@@ -12,10 +12,6 @@ export default {
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   moduleDirectories: ["node_modules", "<rootDir>/"],
   transformIgnorePatterns: ["!node_modules/", "!.next/"],
-  moduleNameMapper: {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js",
-    "\\.(css|less)$": "<rootDir>/assetsTransformer.js"
-  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 

@@ -15,8 +15,8 @@ import { Submit } from "../components/buttons/button-submit/Submit"
 import { Notification } from "../components/notification/notification"
 
 export const Buy = () => {
-  const { state, UpdateInput, dispatch, removeItem, finishBuy, onSubmit } = useShopCart()
   const [isActive, setIsActive] = useState(false)
+  const { state, UpdateInput, removeItem, finishBuy, onSubmit } = useShopCart()
 
   useEffect(() => {
     state.newTicket !== "" ? setIsActive(true) : setIsActive(false)
@@ -40,16 +40,16 @@ export const Buy = () => {
         </div>
 
         <div className="wrapper-buy">
-          <form onSubmit={(ev) => onSubmit(ev)}>
+          <form data-cy="submit" onSubmit={(ev) => onSubmit(ev)}>
             <Input type="text" value={state.newTicket} onChange={(ev) => UpdateInput(ev)} isActive={isActive} />
             <Submit><PaperPlaneRight size={46} weight="bold" /></Submit>
           </form>
 
-          <Button onClick={finishBuy}>Finish it! <GetIcon /></Button>
+          <Button data-cy="finish-btn" onClick={finishBuy}>Finish it! <GetIcon /></Button>
         </div>
       </div>
 
-      {/* a doc do framer motion pede pra fazer assim, se não for feito ativa um erro no console */}
+      {/* a doc do framer motion pede pra fazer assim, se não for feito dispara um erro no console */}
       <AnimatePresence>
         {state.isError && <Notification error text={state.setError} />}
       </AnimatePresence>
