@@ -1,8 +1,8 @@
+import 'jest-environment-jsdom'
+import '@testing-library/jest-dom'
 import UserEvent from "@testing-library/user-event";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { ShopCartProvider, ShopCartContext } from "./shop-cart-context";
-import 'jest-environment-jsdom'
-import '@testing-library/jest-dom'
 
 const ContextInputWrapper = () => {
   render(

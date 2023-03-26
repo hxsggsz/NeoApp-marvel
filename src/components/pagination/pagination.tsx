@@ -1,6 +1,7 @@
 import { StyledPagination } from '.'
 import { useSearchParams } from "react-router-dom"
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 type PaginationType = {
   max: number | undefined
@@ -55,7 +56,14 @@ export const Pagination = ({ max, pagination, setPagination }: PaginationType) =
     <StyledPagination>
       {/* any por causa do LocalStorage */}
       {pag.map((page: any, idx: number) => (
-        <button key={idx * 100} onClick={() => handlePag(page)} className={active === page ? "active" : ""}>{page}</button>
+        <motion.button
+          whileTap={{ scale: [0.9, 1] }}
+          key={idx * 100}
+          onClick={() => handlePag(page)}
+          className={active === page ? "active" : ""}
+        >
+          {page}
+        </motion.button>
       ))}
     </StyledPagination>
   )

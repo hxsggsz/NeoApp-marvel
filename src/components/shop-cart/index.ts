@@ -131,7 +131,7 @@ export const StyledShop = styled.div<ShopCartTypes>`
       color: var(--white);
 
       &:hover {
-        color: var(--red);
+        color: #a30000;
       }
 
       &:active {

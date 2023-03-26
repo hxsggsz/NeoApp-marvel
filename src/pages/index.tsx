@@ -7,6 +7,7 @@ import { Skeleton } from "../components/skeleton/skeleton"
 import { useGetAllComics } from "../hooks/useGetAllComics"
 import { ShopCart } from "../components/shop-cart/shop-cart"
 import { Pagination } from "../components/pagination/pagination"
+import { AnimatePresence } from "framer-motion"
 
 const getLocalOffset = () => {
   const offset = localStorage.getItem("offset")
@@ -19,10 +20,10 @@ const getLocalOffset = () => {
 export const Index = () => {
   const [pagination, setPagination] = useState<number>(getLocalOffset)
   const { data, isLoading } = useGetAllComics(pagination)
-  
+
   return (
     <>
-      <Header /> 
+      <Header />
 
       <style.Main>
         <Logo />
@@ -35,13 +36,13 @@ export const Index = () => {
                 title={comics.title}
                 desc={comics.description}
                 path={comics.thumbnail.path}
-                extension={comics.thumbnail.extension} 
+                extension={comics.thumbnail.extension}
               />
             ))
           }
-          <ShopCart/>
+          <ShopCart />
 
-          <Pagination pagination={pagination} setPagination={setPagination} max={data?.data.total}/>
+          <Pagination pagination={pagination} setPagination={setPagination} max={data?.data.total} />
         </div>
       </style.Main>
     </>
