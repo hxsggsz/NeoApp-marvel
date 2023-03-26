@@ -2,7 +2,7 @@
 
 describe('main flow', () => {
   beforeEach(() => {
-    //o cypress descarta o localstorage depois de cada test, usando essa função que ta no commands.ts ele não faz isso.
+    //o cypress descarta o localstorage depois de cada it, usando essa função que ta no commands.ts ele não faz isso.
     //assim ele nao descarta e eu posso separar meus testes de uma forma mais organizada
     //@ts-ignore
     cy.restoreLocalStorage()
