@@ -5,9 +5,8 @@
 
 export default {
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   modulePaths: ["<rootDir>/src/"],
-  collectCoverageFrom: ["src/**/*.ts(x)"],
   testEnvironment: "jest-environment-jsdom",
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   moduleDirectories: ["node_modules", "<rootDir>/"],

@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('main flow', () => {
   beforeEach(() => {
     //o cypress descarta o localstorage depois de cada test, usando essa função que ta no commands.ts ele não faz isso.
@@ -37,7 +39,7 @@ describe('main flow', () => {
     cy.get("button").contains("CheckOut").click()
 
     cy.url().should('include', '/buy')
-  });
+  }); 
 
   it('should see the shop-list and close it', () => {
     cy.visit("/buy")
