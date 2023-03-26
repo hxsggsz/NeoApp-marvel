@@ -1,11 +1,11 @@
 import { StyledShop } from "."
 import { useState } from 'react';
 import { Text } from "../text/text";
-import { AnimatePresence, motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { GetIcon } from "../icons-svg/getIcon"
 import { ShoppingCart, X } from "phosphor-react"
 import { Button } from "../buttons/button/button"
+import { AnimatePresence, motion } from "framer-motion"
 import { SpiderManWeb } from "../icons-svg/spiderman-web"
 import { useShopCart } from "../../context/shop-cart-context"
 

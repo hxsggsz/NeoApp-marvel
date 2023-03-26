@@ -19,7 +19,6 @@ const getLocalpagination = () => {
 
 export const Pagination = ({ max, pagination, setPagination }: PaginationType) => {
   const [pag, _] = useState(getLocalpagination)
-  const [active, setActive] = useState(pagination)
   let [searchParams, setSearchParams] = useSearchParams()
 
   //pega o maior número inteiro do limite da APi dividido por 10
@@ -28,7 +27,6 @@ export const Pagination = ({ max, pagination, setPagination }: PaginationType) =
 
   useEffect(() => {
     if (offset !== null) {
-      setPagination(Number(offset))
       localStorage.setItem("offset", JSON.stringify(offset))
     }
   }, [offset])
@@ -47,20 +45,19 @@ export const Pagination = ({ max, pagination, setPagination }: PaginationType) =
       pag.pop()
     }
 
-    setActive(currentPage)
+    setPagination(currentPage)
     localStorage.setItem("pag", JSON.stringify(pag))
     setSearchParams({ offset: currentPage.toString() })
   }
 
   return (
     <StyledPagination>
-      {/* any por causa do LocalStorage */}
-      {pag.map((page: any, idx: number) => (
+      {pag.map((page: number, idx: number) => (
         <motion.button
-          whileTap={{ scale: [0.9, 1] }}
           key={idx * 100}
+          whileTap={{ scale: [0.9, 1] }}
           onClick={() => handlePag(page)}
-          className={active === page ? "active" : ""}
+          className={pagination === page ? "active" : ""}
         >
           {page}
         </motion.button>

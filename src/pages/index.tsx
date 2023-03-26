@@ -24,7 +24,6 @@ export const Index = () => {
   return (
     <>
       <Header />
-
       <style.Main>
         <Logo />
         <div className="container">
@@ -36,13 +35,13 @@ export const Index = () => {
                 title={comics.title}
                 desc={comics.description}
                 path={comics.thumbnail.path}
-                extension={comics.thumbnail.extension}
+                extension={comics.thumbnail.extension} 
               />
             ))
           }
           <ShopCart />
 
-          <Pagination pagination={pagination} setPagination={setPagination} max={data?.data.total} />
+            <Pagination pagination={pagination} setPagination={setPagination} max={data?.data.total} />
         </div>
       </style.Main>
     </>
